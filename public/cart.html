@@ -12,11 +12,14 @@
 
 <header class="site-header">
   <div class="wrap">
-    <a href="/index.html" class="wordmark" aria-label="Kessler Goods Store home"><img src="/assets/images/kessler-goods-logo.svg" alt="Kessler Goods Store" /></a>
+    <div class="brand-area">
+      <a href="/index.html" class="wordmark" aria-label="Kessler Goods Store home"><img src="/assets/images/kessler-goods-logo.svg" alt="Kessler Goods Store" /></a>
+      <span class="brand-tagline">Everyday goods, made to last.</span>
+    </div>
     <nav class="main-nav">
       <a href="/index.html">Shop</a>
       <a href="/cart.html" class="cart-link">Cart <span class="cart-count" id="navCartCount" data-empty="true">0</span></a>
-      <span id="navAuthArea" class="nav-auth-area"><a href="/login.html">Log in</a></span>
+      <span id="navAuthArea" class="nav-auth-area"><a href="/login.html" class="login-btn">Log in</a></span>
     </nav>
   </div>
 </header>
@@ -33,7 +36,7 @@
       <h3>Order summary</h3>
       <div class="summary-row">
         <span>Subtotal</span>
-        <span id="summarySubtotal">$0.00</span>
+        <span id="summarySubtotal">Rs. 0</span>
       </div>
       <div class="summary-row">
         <span>Shipping</span>
@@ -41,7 +44,7 @@
       </div>
       <div class="summary-row total">
         <span>Total</span>
-        <span id="summaryTotal">$0.00</span>
+        <span id="summaryTotal">Rs. 0</span>
       </div>
       <button class="btn btn-full" id="checkoutBtn" style="margin-top:20px;">Proceed to checkout</button>
 

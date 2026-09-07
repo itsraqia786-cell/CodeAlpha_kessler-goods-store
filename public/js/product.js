@@ -5,7 +5,7 @@ const params = new URLSearchParams(window.location.search);
 const productId = params.get("id");
 
 function money(amount) {
-  return `$${amount.toFixed(2)}`;
+  return `Rs. ${Number(amount).toLocaleString("en-PK")}`;
 }
 
 function stockNote(stock) {

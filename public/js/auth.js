@@ -16,6 +16,17 @@ function redirectAfterAuth() {
   window.location.href = next === "cart" ? "/cart.html" : "/index.html";
 }
 
+document.querySelectorAll(".password-toggle").forEach((toggle) => {
+  const input = toggle.closest(".password-field").querySelector("input");
+  toggle.addEventListener("click", () => {
+    const isHidden = input.type === "password";
+    input.type = isHidden ? "text" : "password";
+    toggle.setAttribute("aria-label", isHidden ? "Hide password" : "Show password");
+    toggle.setAttribute("aria-pressed", String(isHidden));
+    toggle.classList.toggle("is-visible", isHidden);
+  });
+});
+
 if (mode === "login") {
   document.getElementById("loginForm").addEventListener("submit", async (e) => {
     e.preventDefault();

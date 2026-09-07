@@ -6,9 +6,10 @@ const searchInput = document.getElementById("searchInput");
 
 let activeCategory = "";
 let searchTimer = null;
+let productRequestVersion = 0;
 
 function money(amount) {
-  return `$${amount.toFixed(2)}`;
+  return `Rs. ${Number(amount).toLocaleString("en-PK")}`;
 }
 
 function renderCategories(categories) {
@@ -59,15 +60,33 @@ function renderProducts(products) {
     .join("");
 }
 
+function filterProducts(products, searchTerm) {
+  const query = searchTerm.trim().toLowerCase();
+  if (!query) return products;
+
+  // Prefer a category match: "kitchen" should never return a book because
+  // a book description contains the word "kitchens".
+  const categoryMatches = products.filter((product) =>
+    product.category.toLowerCase().includes(query)
+  );
+  if (categoryMatches.length) return categoryMatches;
+
+  return products.filter((product) => {
+    const searchableText = `${product.name} ${product.description}`.toLowerCase();
+    return searchableText.includes(query);
+  });
+}
+
 async function loadProducts() {
+  const requestVersion = ++productRequestVersion;
   grid.innerHTML = `<div class="empty-state">Loading products…</div>`;
   const params = new URLSearchParams();
   if (activeCategory) params.set("category", activeCategory);
-  if (searchInput.value.trim()) params.set("search", searchInput.value.trim());
 
   try {
     const { products, categories } = await api.get(`/api/products?${params.toString()}`);
-    renderProducts(products);
+    if (requestVersion !== productRequestVersion) return;
+    renderProducts(filterProducts(products, searchInput.value));
     if (!categoryRow.dataset.rendered) {
       renderCategories(categories);
       categoryRow.dataset.rendered = "true";

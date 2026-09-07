@@ -12,7 +12,7 @@ const formMessage = document.getElementById("formMessage");
 let currentLines = []; // [{ product, quantity }]
 
 function money(amount) {
-  return `$${amount.toFixed(2)}`;
+  return `Rs. ${Number(amount).toLocaleString("en-PK")}`;
 }
 
 function setMessage(text, type) {

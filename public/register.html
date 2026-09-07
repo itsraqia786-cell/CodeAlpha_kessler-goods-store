@@ -12,11 +12,14 @@
 
 <header class="site-header">
   <div class="wrap">
-    <a href="/index.html" class="wordmark" aria-label="Kessler Goods Store home"><img src="/assets/images/kessler-goods-logo.svg" alt="Kessler Goods Store" /></a>
+    <div class="brand-area">
+      <a href="/index.html" class="wordmark" aria-label="Kessler Goods Store home"><img src="/assets/images/kessler-goods-logo.svg" alt="Kessler Goods Store" /></a>
+      <span class="brand-tagline">Everyday goods, made to last.</span>
+    </div>
     <nav class="main-nav">
       <a href="/index.html">Shop</a>
       <a href="/cart.html" class="cart-link">Cart <span class="cart-count" id="navCartCount" data-empty="true">0</span></a>
-      <span id="navAuthArea" class="nav-auth-area"><a href="/login.html">Log in</a></span>
+      <span id="navAuthArea" class="nav-auth-area"><a href="/login.html" class="login-btn">Log in</a></span>
     </nav>
   </div>
 </header>
@@ -39,7 +42,12 @@
       </div>
       <div class="field">
         <label for="password">Password</label>
-        <input type="password" id="password" required autocomplete="new-password" minlength="8" />
+        <div class="password-field">
+          <input type="password" id="password" required autocomplete="new-password" minlength="8" />
+          <button type="button" class="password-toggle" aria-label="Show password" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3l18 18M10.6 10.6a2 2 0 0 0 2.8 2.8M9.9 5.1A10.8 10.8 0 0 1 12 5c5.5 0 9.3 4.5 10 7-0.3 1-1.1 2.4-2.4 3.7M6.6 6.6C4.6 8 3.4 10.2 3 12c0.7 2.5 4.5 7 9 7 0.9 0 1.8-0.2 2.6-0.5"/></svg>
+          </button>
+        </div>
       </div>
       <button type="submit" class="btn btn-full" id="submitBtn">Create account</button>
     </form>

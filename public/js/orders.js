@@ -4,7 +4,7 @@ const ordersList = document.getElementById("ordersList");
 const confirmationBanner = document.getElementById("confirmationBanner");
 
 function money(amount) {
-  return `$${amount.toFixed(2)}`;
+  return `Rs. ${Number(amount).toLocaleString("en-PK")}`;
 }
 
 function formatDate(iso) {

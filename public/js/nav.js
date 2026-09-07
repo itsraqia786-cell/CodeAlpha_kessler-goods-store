@@ -23,6 +23,33 @@ function setActiveNavItem() {
   });
 }
 
+function renderBackButton() {
+  const headerWrap = document.querySelector(".site-header .wrap");
+  const header = document.querySelector(".site-header");
+  const pathname = window.location.pathname;
+  const isHome = pathname === "/" || pathname === "/index.html";
+  if (!headerWrap || !header || isHome || document.getElementById("siteBackBtn")) return;
+
+  const backButton = document.createElement("button");
+  backButton.type = "button";
+  backButton.id = "siteBackBtn";
+  backButton.className = "site-back-btn";
+  backButton.setAttribute("aria-label", "Go back to the previous page");
+  backButton.textContent = "← Back";
+  backButton.addEventListener("click", () => {
+    if (window.history.length > 1) window.history.back();
+    else window.location.href = "/index.html";
+  });
+
+  const backSection = document.createElement("div");
+  backSection.className = "page-back-section";
+  const backWrap = document.createElement("div");
+  backWrap.className = "wrap";
+  backWrap.appendChild(backButton);
+  backSection.appendChild(backWrap);
+  header.insertAdjacentElement("afterend", backSection);
+}
+
 async function renderAuthArea() {
   const el = document.getElementById("navAuthArea");
   if (!el) return;
@@ -35,6 +62,8 @@ async function renderAuthArea() {
     `;
     const logoutLink = document.getElementById("navLogout");
     logoutLink.addEventListener("click", async (e) => {
+      const confirmed = window.confirm("Are you sure you want to log out?");
+      if (!confirmed) return;
       await api.post("/api/auth/logout");
       showToast("You have been logged out successfully.");
       setTimeout(() => {
@@ -42,7 +71,7 @@ async function renderAuthArea() {
       }, 900);
     });
   } catch {
-    el.innerHTML = `<a href="/login.html">Log in</a>`;
+    el.innerHTML = `<a href="/login.html" class="login-btn">Log in</a>`;
   }
 
   setActiveNavItem();
@@ -50,6 +79,7 @@ async function renderAuthArea() {
 
 document.addEventListener("DOMContentLoaded", () => {
   renderCartCount();
+  renderBackButton();
   setActiveNavItem();
   renderAuthArea();
 });

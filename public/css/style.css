@@ -104,7 +104,23 @@ p:last-child { margin-bottom: 0; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 76px;
+  min-height: 82px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.brand-area {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.brand-tagline {
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
 }
 
 .wordmark {
@@ -136,7 +152,9 @@ p:last-child { margin-bottom: 0; }
   border-left: 1px solid var(--stone);
 }
 
-.logout-btn {
+.logout-btn,
+.login-btn,
+.site-back-btn {
   border: 1px solid var(--forest);
   border-radius: 999px;
   background: var(--forest);
@@ -146,11 +164,34 @@ p:last-child { margin-bottom: 0; }
   font-weight: 600;
   line-height: 1;
   cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
   transition: background 0.15s ease, border-color 0.15s ease, transform 0.05s ease;
 }
 
-.logout-btn:hover { background: var(--forest-dark); border-color: var(--forest-dark); }
+.logout-btn:hover,
+.login-btn:hover,
+.site-back-btn:hover { background: var(--forest-dark); border-color: var(--forest-dark); color: #fff; }
 .logout-btn:active { transform: translateY(1px); }
+
+.site-back-btn {
+  min-width: 0;
+  padding: 7px 13px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.page-back-section {
+  padding: 10px 0;
+  background: var(--paper);
+  border-bottom: 1px solid var(--stone);
+}
+
+.page-back-section .wrap {
+  display: flex;
+  justify-content: flex-start;
+}
 
 .main-nav a {
   text-decoration: none;
@@ -185,6 +226,18 @@ p:last-child { margin-bottom: 0; }
 .main-nav a.is-active::after {
   transform: scaleX(1);
 }
+
+.main-nav .login-btn {
+  border: 1px solid var(--forest);
+  border-radius: 999px;
+  background: var(--forest);
+  color: #fff;
+  padding: 7px 13px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.main-nav .login-btn::after { display: none; }
 
 .cart-link {
   display: inline-flex;
@@ -635,6 +688,30 @@ p:last-child { margin-bottom: 0; }
   outline-offset: 1px;
 }
 
+.password-field { position: relative; }
+.password-field input { padding-right: 46px; }
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  width: 34px;
+  height: 34px;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+
+.password-toggle:hover { background: var(--stone-soft); color: var(--forest); }
+.password-toggle svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.password-toggle.is-visible svg path:first-child { display: none; }
+
 .field-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -839,6 +916,7 @@ p:last-child { margin-bottom: 0; }
   }
 
   .nav-auth-area { gap: 12px; padding-left: 12px; }
+  .site-back-btn { padding: 7px 13px; font-size: 0.82rem; }
 
   .main-nav a { font-size: 0.84rem; }
   .main-nav a::after { bottom: -4px; }
