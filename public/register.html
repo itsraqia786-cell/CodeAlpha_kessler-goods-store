@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Create an account — Kessler Goods</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="/index.html" class="wordmark" aria-label="Kessler Goods Store home"><img src="/assets/images/kessler-goods-logo.svg" alt="Kessler Goods Store" /></a>
+    <nav class="main-nav">
+      <a href="/index.html">Shop</a>
+      <a href="/cart.html" class="cart-link">Cart <span class="cart-count" id="navCartCount" data-empty="true">0</span></a>
+      <span id="navAuthArea" class="nav-auth-area"><a href="/login.html">Log in</a></span>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="form-card">
+    <h1>Create an account</h1>
+    <p class="sub">Takes about thirty seconds. No newsletter unless you ask for one.</p>
+
+    <div id="formMessage" class="form-message"></div>
+
+    <form id="registerForm">
+      <div class="field">
+        <label for="name">Full name</label>
+        <input type="text" id="name" required autocomplete="name" />
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" required autocomplete="email" />
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" required autocomplete="new-password" minlength="8" />
+      </div>
+      <button type="submit" class="btn btn-full" id="submitBtn">Create account</button>
+    </form>
+
+    <div class="form-foot">
+      Already have an account? <a href="/login.html">Log in</a>
+    </div>
+  </div>
+</main>
+
+<script src="/js/api.js"></script>
+<script src="/js/cart-store.js"></script>
+<script src="/js/toast.js"></script>
+<script src="/js/nav.js"></script>
+<script src="/js/auth.js" data-mode="register"></script>
+</body>
+</html>
